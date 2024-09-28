@@ -63,7 +63,7 @@ def validate_config_file_type(input_string):
     last_part = parts[-1] if len(parts) > 1 else input_string
     
     # Check if the last part matches any of the file types
-    if f'.{last_part}' in common_config_file_typesß:
+    if f'.{last_part}' in common_config_file_types:
         return True
     else:
         return False

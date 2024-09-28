@@ -6,9 +6,6 @@ from ReadConfig import *
 from ReadData import *
 import validation as vl
 
-
-sys.path.append('/Users/noman/Documents/COURSES/SoftwareProject/DataAnonymization/DataProcessing')
-
 output_directory = ""
 def on__file_button_click():
     file_path = filedialog.askopenfilename(title="Select Data File ")
@@ -25,7 +22,7 @@ def on_config_button_click():
     if file_path:
         last_folder_name = os.path.basename(os.path.dirname(file_path))
         filename = os.path.basename(file_path)
-        if vl.is_config_file_type(filename):
+        if vl.validate_config_file_type(filename):
             label_config_file.config(text=f"{last_folder_name} / {filename}")
         else:
             label_config_file.config(text=f"File Type is Invalid")
@@ -97,7 +94,7 @@ spacer_bottom = tk.Label(frame_left, bg='gray25', height=2)  # Match the frame's
 spacer_bottom.pack( expand=True,padx=10, pady=(0, 20))  # Vertical space of 20 below the buttons
 
 # Load the logo image
-logo_path = "/Users/noman/Documents/COURSES/SoftwareProject/DataAnonymization/UI/DA_logo.png"  # Update with the path to your logo
+logo_path = "/Users/noman/Documents/COURSES/SoftwareProject/DataAnonymization/DA_logo.png"  # Update with the path to your logo
   # Update with the path to your logo
 logo_image = Image.open(logo_path)
 logo_image = logo_image.resize((200, 200), Image.LANCZOS)  # Resize the image if needed
