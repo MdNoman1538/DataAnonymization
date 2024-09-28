@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk  # Import Pillow for image handling
 import os
-
+sys.path.append('/Users/noman/Documents/COURSES/SoftwareProject/DataAnonymization/DataProcessing')
 
 output_directory = ""
 def on__file_button_click():
@@ -21,7 +21,13 @@ def on_config_button_click():
 
 # Function to handle selecting the output location
 def select_output_directory():
-    global output_directory
+    
+    output_directory = filedialog.askdirectory(title="Select Output Folder")
+    if output_directory:
+        label_output_directory.config(text=f"Output Folder: {output_directory}")
+
+def Action():
+    
     output_directory = filedialog.askdirectory(title="Select Output Folder")
     if output_directory:
         label_output_directory.config(text=f"Output Folder: {output_directory}")
