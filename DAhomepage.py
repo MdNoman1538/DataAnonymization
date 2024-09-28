@@ -2,6 +2,11 @@ import tkinter as tk
 from tkinter import filedialog
 from PIL import Image, ImageTk  # Import Pillow for image handling
 import os
+from ReadConfig import *
+from ReadData import *
+import validation as vl
+
+
 sys.path.append('/Users/noman/Documents/COURSES/SoftwareProject/DataAnonymization/DataProcessing')
 
 output_directory = ""
@@ -10,14 +15,20 @@ def on__file_button_click():
     if file_path:
         last_folder_name = os.path.basename(os.path.dirname(file_path))
         filename = os.path.basename(file_path)
-        label_data_file.config(text=f"{last_folder_name} / {filename}")
+        if vl.validate_data_file_type(filename):
+            label_data_file.config(text=f"{last_folder_name} / {filename}")
+        else:
+            label_data_file.config(text=f"File Type is Invalid")
 
 def on_config_button_click():
     file_path = filedialog.askopenfilename(title="Select Config File")
     if file_path:
         last_folder_name = os.path.basename(os.path.dirname(file_path))
         filename = os.path.basename(file_path)
-        label_config_file.config(text=f"{last_folder_name} / {filename}")
+        if vl.is_config_file_type(filename):
+            label_config_file.config(text=f"{last_folder_name} / {filename}")
+        else:
+            label_config_file.config(text=f"File Type is Invalid")
 
 # Function to handle selecting the output location
 def select_output_directory():
