@@ -5,6 +5,7 @@ import os
 from ReadConfig import *
 from ReadData import *
 import validation as vl
+import ReadData as RD
 
 output_directory = ""
 def on__file_button_click():
@@ -14,8 +15,10 @@ def on__file_button_click():
         filename = os.path.basename(file_path)
         if vl.validate_data_file_type(filename):
             label_data_file.config(text=f"{last_folder_name} / {filename}")
+            RD.load_Data(file_path)
         else:
             label_data_file.config(text=f"File Type is Invalid")
+        
 
 def on_config_button_click():
     file_path = filedialog.askopenfilename(title="Select Config File")
